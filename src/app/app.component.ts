@@ -32,6 +32,11 @@ export class AppComponent {
   hasData = this.dataService.loaded$;
 
   eulaAcceptance = localStorage['EULA'] === 'accepted';
+
+  ngOnInit() {
+    this.eulaAcceptance = localStorage.getItem('EULA') === 'accepted';
+  }
+
   acceptEula() {
     this.eulaAcceptance = true;
     localStorage['EULA'] = 'accepted';
