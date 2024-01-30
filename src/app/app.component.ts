@@ -19,6 +19,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { DataService } from './data.service';
 import { AuthService } from './auth.service';
+import { inject } from '@vercel/analytics';
+inject();
 
 @Component({
   selector: 'app-root',
@@ -26,26 +28,20 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public auth: AuthService, private dataService: DataService, private cdr: ChangeDetectorRef) {}
+  constructor(public auth: AuthService, private dataService: DataService) {}
 
   loading = false;
   hasData = this.dataService.loaded$;
 
   eulaAcceptance = localStorage['EULA'] === 'accepted';
 
-  ngOnInit() {
-    this.eulaAcceptance = localStorage.getItem('EULA') === 'accepted';
-    this.cdr.detectChanges();
-  }
-
   acceptEula() {
     this.eulaAcceptance = true;
     localStorage['EULA'] = 'accepted';
-    Notification.requestPermission();
-    this.cdr.detectChanges();
   }
   declineEula() {
     localStorage.removeItem('EULA');
     location.href = 'about:blank';
   }
+  
 }
