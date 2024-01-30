@@ -33,7 +33,7 @@ export class AppComponent {
   loading = false;
   hasData = this.dataService.loaded$;
 
-  eulaAcceptance = localStorage['EULA'] === 'accepted';
+  eulaAcceptance = true;
 
   acceptEula() {
     this.eulaAcceptance = true;
