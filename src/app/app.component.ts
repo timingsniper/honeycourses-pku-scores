@@ -32,6 +32,9 @@ export class AppComponent {
   constructor(public auth: AuthService, private dataService: DataService) {}
   loading = false;
   hasData = this.dataService.loaded$;
+  toggleEula() {
+    this.eulaAcceptance = !this.eulaAcceptance;
+  }
 
   acceptEula() {
     this.eulaAcceptance = true;
