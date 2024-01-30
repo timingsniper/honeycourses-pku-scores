@@ -1,19 +1,19 @@
-// Copyright (C) 2022 Guyutongxue
+// Copyright (C) 2024 Joonwoo Jang
 //
-// This file is part of pkuhelper-web-score.
+// This file is part of honeycourses-pku-scores
 //
-// pkuhelper-web-score is free software: you can redistribute it and/or modify
+// honeycourses-pku-scores is a free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// pkuhelper-web-score is distributed in the hope that it will be useful,
+// honeycourses-pku-scores is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with pkuhelper-web-score.  If not, see <http://www.gnu.org/licenses/>.
+// along with honeycourses-pku-scores.  If not, see <http://www.gnu.org/licenses/>.
 
 import type { IsopScores, ScoreBase } from './api';
 
@@ -129,13 +129,13 @@ function extraInfos(row: ScoreBase) {
     [string] | [string, (orig: string) => HTMLElement]
   >(); // so it is ordered
   // both yjs and bks
-  interestingKeys.set('kch', ['课程号']);
+  interestingKeys.set('kch', ['강의 번호']);
   // yjs
-  interestingKeys.set('cjjlfs', ['成绩记录方式']);
+  interestingKeys.set('cjjlfs', ['성적 기록 방식']);
   interestingKeys.set('hgbz', ['合格标志']);
   // bks
   interestingKeys.set('zxjhbh', [
-    '执行计划编号',
+    '강의 실행기획 번호',
     (v) => {
       const ele = document.createElement('a');
       ele.setAttribute(
@@ -150,12 +150,12 @@ function extraInfos(row: ScoreBase) {
       return ele;
     },
   ]);
-  interestingKeys.set('ywmc', ['课程英文名']);
-  interestingKeys.set('kctx', ['课程体系']);
-  interestingKeys.set('jxbh', ['教学班号']);
-  interestingKeys.set('skjsxm', ['教师信息']);
-  interestingKeys.set('bkcjbh', ['成绩编号']);
-  interestingKeys.set('xslb', ['学生类别']);
+  interestingKeys.set('ywmc', ['강의 영문명']);
+  interestingKeys.set('kctx', ['강의 카테고리']);
+  interestingKeys.set('jxbh', ['반 번호']);
+  interestingKeys.set('skjsxm', ['교사 정보']);
+  interestingKeys.set('bkcjbh', ['성적 번호']);
+  interestingKeys.set('xslb', ['학생 종류']);
   let ret: Array<[string, Node]> = [];
   interestingKeys.forEach((v, k) => {
     const orig = (row as Record<string, string | undefined>)[k];

@@ -4,12 +4,12 @@
       <app-vertical-layout
         left
         [up]="fix(credit, 1)"
-        down="学分"
+        down="학점"
       ></app-vertical-layout>
       <app-vertical-layout
         middle
-        up="总绩点"
-        down="共 {{ length }} 门课程，官方 GPA：{{ isopGpa ?? '-.--' }}"
+        up="총 GPA"
+        down="총 {{ length }} 개 수업，공식 GPA：{{ isopGpa ?? '-.--' }}"
         [needHideText]="true"
       ></app-vertical-layout>
       <app-vertical-layout
@@ -31,13 +31,13 @@
       <app-vertical-layout
         left
         [up]="fix(c.credit, 1)"
-        down="学分"
+        down="학점"
       ></app-vertical-layout>
       <app-vertical-layout
         middle
         [extra]="c.extras"
         [up]="c.name"
-        down="共 {{ c.length }} 门课程"
+        down="총 {{ c.length }} 개 수업"
       ></app-vertical-layout>
       <app-vertical-layout
         right

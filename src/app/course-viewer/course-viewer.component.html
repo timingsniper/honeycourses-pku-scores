@@ -1,6 +1,6 @@
 <div class="course-row" [ngClass]="{ 'row-tampered': tampered }">
   <app-row-layout [background]="makeScoreGradient(score, judgeByGpa$ | async)" [rainbow]="!tampered && isFull(score)">
-    <app-vertical-layout left [up]="fix(credit, 1)" down="学分">
+    <app-vertical-layout left [up]="fix(credit, 1)" down="학점">
     </app-vertical-layout>
 
     <!-- {
@@ -22,7 +22,7 @@
       <span *ngIf="tampered; else pinzhi"
         class="prevent-click-handler course-badge course-badge-danger"
         (click)="untamper()"
-        data-tooltip="非真实成绩"
+        data-tooltip="변경된 성적"
       >
         <span class="icon icon-warning"></span>
       </span>
@@ -30,7 +30,7 @@
         <span
           class="prevent-click-handler course-badge course-badge-primary"
           (click)="gotoPinzhi()"
-          data-tooltip="测评该课程">
+          data-tooltip="강의 평가">
           <span class="icon icon-share"></span>
         </span>
       </ng-template>

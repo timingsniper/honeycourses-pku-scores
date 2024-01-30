@@ -1,8 +1,8 @@
 <div class="title-bar">
   <div class="aux-margin">
-    <div class="title"><p class="centered-line">成绩查询</p></div>
+    <div class="title"><p class="centered-line">성적 조회</p></div>
     <div class="flex flex-row flex-wrap">
-      <strong>登录<!-- 方式 --></strong>
+      <strong>로그인</strong>
       <div class="flex-grow">
         <!-- <div class="flex flex-row items-center">
           <input
@@ -44,14 +44,14 @@
           <div class="flex-grow flex flex-row flex-wrap">
             <input
               type="text"
-              placeholder="学号"
+              placeholder="학번"
               class="flex-grow font-mono input input-xs ml-2 mb-2"
               [disabled]="auth.loginMethod !== 'iaaa'"
               [(ngModel)]="auth.username"
             />
             <input
               type="password"
-              placeholder="密码"
+              placeholder="비밀번호"
               class="flex-grow font-mono input input-xs ml-2 mb-2"
               [disabled]="auth.loginMethod !== 'iaaa'"
               [(ngModel)]="auth.password"
@@ -60,6 +60,5 @@
         </div>
       </div>
     </div>
-    <span class="text-sm">如果你只是想在“北大树洞”中使用课程测评，欢迎使用<a href="https://greasyfork.org/zh-CN/scripts/467865-%E5%8C%97%E5%A4%A7%E6%A0%91%E6%B4%9E-%E8%AF%BE%E7%A8%8B%E6%B5%8B%E8%AF%84" target="_blank">此用户脚本</a>！</span>
   </div>
 </div>
