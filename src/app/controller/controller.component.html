@@ -1,9 +1,9 @@
 <p class="controller-bar print-hide">
   <a (click)="toggleAutoReload()">
     <span class="icon icon-refresh"></span>
-    <span *ngIf="interval === null"> 自动刷新 </span>
+    <span *ngIf="interval === null"> 자동 새로고침 </span>
     <span *ngIf="interval !== null">
-      {{ nextUpdateTime | amLocale: "zh-cn" | amTimeAgo }}刷新
+      {{ nextUpdateTime | amLocale: "ko-kr" | amTimeAgo }}{{" "}}새로고침
     </span>
   </a>
   &nbsp; &nbsp;
@@ -12,19 +12,19 @@
       class="icon"
       [ngClass]="(hideText$ | async) ? 'icon-show' : 'icon-hide'"
     ></span>
-    {{ (hideText$ | async) ? "显示文字" : "隐藏文字" }}
+    {{ (hideText$ | async) ? "글자 보이기" : "글자 숨기기" }}
   </a>
   &nbsp; &nbsp;
   <a (click)="toggleJudgeByGpa()">
     <span
       [title]="
         (judgeByGpa$ | async)
-          ? '当前四分制着色，GPA 从 1 至 4 由红变绿'
-          : '当前百分制着色，分数从 60 至 100 由红变绿'
+          ? '1에서 4까지 GPA에 따라 빨간색에서 초록색으로 변합니다'
+          : '60에서 100까지 점수에 따라 빨간색에서 초록색으로 변합니다'
       "
     >
       <span class="icon icon-display"></span>
-      {{ (judgeByGpa$ | async) ? "百分制着色" : "四分制着色" }}
+      {{ (judgeByGpa$ | async) ? "백분제 색 표시" : "4점제 색 표시" }}
     </span>
   </a>
 </p>

@@ -86,10 +86,10 @@
       </div>
       <app-vertical-layout
         middle
-        up="新增成绩"
-        down="共 {{ courses.length }} 门课程"
+        up="새로운 성적"
+        down="총 {{ courses.length }} 개"
       ></app-vertical-layout>
-      <button right (click)="done()" class="read-all-button">已阅</button>
+      <button right (click)="done()" class="read-all-button">확인</button>
     </app-row-layout>
   </div>
   <app-course-viewer *ngFor="let c of courses" [index]="c"> </app-course-viewer>

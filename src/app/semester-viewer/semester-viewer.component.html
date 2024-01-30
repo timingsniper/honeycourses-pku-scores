@@ -1,12 +1,12 @@
 <div class="semester-block">
   <div [ngClass]="{ 'row-tampered': tampered }">
     <app-row-layout [background]="colorizeSemester(score, judgeByGpa$ | async)">
-      <app-vertical-layout left [up]="fix(credit, 1)" down="学分">
+      <app-vertical-layout left [up]="fix(credit, 1)" down="학점">
       </app-vertical-layout>
       <app-vertical-layout
         middle
         [up]="name"
-        down="共 {{ courseList.length }} 门课程"
+        down="총 {{ courseList.length }} 개 수업"
       >
       </app-vertical-layout>
       <app-vertical-layout

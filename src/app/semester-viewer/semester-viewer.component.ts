@@ -1,19 +1,19 @@
-// Copyright (C) 2022 Guyutongxue
+// Copyright (C) 2024 Joonwoo Jang
 //
-// This file is part of pkuhelper-web-score.
+// This file is part of honeycourses-pku-scores
 //
-// pkuhelper-web-score is free software: you can redistribute it and/or modify
+// honeycourses-pku-scores is a free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// pkuhelper-web-score is distributed in the hope that it will be useful,
+// honeycourses-pku-scores is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with pkuhelper-web-score.  If not, see <http://www.gnu.org/licenses/>.
+// along with honeycourses-pku-scores.  If not, see <http://www.gnu.org/licenses/>.
 
 import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
@@ -47,8 +47,22 @@ export class SemesterViewerComponent {
   @Input() set sem(value: Semester) { this.#sem$.next(value); }
   #sem$ = new Subject<Semester>();
 
+  private transformName(originalName: string): string { // 학년, 학기명 한국어로 변환
+    const yearMatch = originalName.match(/(\d+)学年/);
+    const termMatch = originalName.match(/第(\d+)学期/);
+  
+    if (yearMatch && termMatch) {
+      const year = parseInt(yearMatch[1], 10);
+      const term = termMatch[1];
+      return `${year}-${year + 1}학년도 ${term}학기`;
+    } else {
+      return originalName;
+    }
+  }
+  
+
   #subscription = this.#sem$.pipe(
-    tap(sem => this.name = sem.name),
+    tap(sem => this.name = this.transformName(sem.name)),
     switchMap(sem => this.dataService.scores$.pipe(
       map(({ courses }) => [courses, sem.courseList] as [Course[], number[]])
     )),

@@ -1,8 +1,8 @@
 <div>
   <p class="refresh-time-line print-hide">
-    <a (click)="auth.load()"> <span class="icon icon-reload"></span> 刷新</a>
+    <a (click)="auth.load()"> <span class="icon icon-reload"></span> 새로고침</a>
     &nbsp;
-    {{ lastUpdatedTime$ | async | amLocale:'zh-cn' | amTimeAgo }}更新
+    {{ lastUpdatedTime$ | async | amLocale:'ko-kr' | amTimeAgo }}{{" "}}업데이트됨
   </p>
   <div class="viewer">
     <app-new-block-viewer *ngIf="hasNewBlock | async"></app-new-block-viewer>
