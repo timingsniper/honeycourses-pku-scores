@@ -40,10 +40,8 @@ export class AppComponent {
 
   acceptEula() {
     this.eulaAcceptance = true;
-    localStorage['EULA'] = 'accepted';
   }
   declineEula() {
-    localStorage.removeItem('EULA');
     location.href = 'about:blank';
   }
   
