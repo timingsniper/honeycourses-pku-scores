@@ -15,7 +15,7 @@
 // You should have received a copy of the GNU General Public License
 // along with honeycourses-pku-scores.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { DataService } from './data.service';
 import { AuthService } from './auth.service';
@@ -26,7 +26,7 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public auth: AuthService, private dataService: DataService) {}
+  constructor(public auth: AuthService, private dataService: DataService, private cdr: ChangeDetectorRef) {}
 
   loading = false;
   hasData = this.dataService.loaded$;
@@ -35,12 +35,14 @@ export class AppComponent {
 
   ngOnInit() {
     this.eulaAcceptance = localStorage.getItem('EULA') === 'accepted';
+    this.cdr.detectChanges();
   }
 
   acceptEula() {
     this.eulaAcceptance = true;
     localStorage['EULA'] = 'accepted';
     Notification.requestPermission();
+    this.cdr.detectChanges();
   }
   declineEula() {
     localStorage.removeItem('EULA');
