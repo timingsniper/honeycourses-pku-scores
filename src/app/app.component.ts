@@ -28,12 +28,15 @@ inject();
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  eulaAcceptance = true;
+  initialized = false;
   constructor(public auth: AuthService, private dataService: DataService) {}
+  ngOnInit() {
+    this.initialized = true;
+  }
 
   loading = false;
   hasData = this.dataService.loaded$;
-
-  eulaAcceptance = true;
 
   acceptEula() {
     this.eulaAcceptance = true;

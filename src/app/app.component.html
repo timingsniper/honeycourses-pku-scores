@@ -28,6 +28,7 @@
   <app-footer (showEula)="eulaAcceptance = false"></app-footer>
 </div>
 <!-- 用户须知 -->
+<div *ngIf="initialized">
 <input
   type="checkbox"
   id="eulaModal"
@@ -78,4 +79,5 @@
       <button class="btn" (click)="acceptEula()">계속</button>
     </div>
   </div>
+</div>
 </div>
