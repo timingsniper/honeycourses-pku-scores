@@ -15,10 +15,12 @@
 // You should have received a copy of the GNU General Public License
 // along with honeycourses-pku-scores.  If not, see <http://www.gnu.org/licenses/>.
 
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
 import { DataService } from './data.service';
 import { AuthService } from './auth.service';
+import { inject } from '@vercel/analytics';
+inject();
 
 @Component({
   selector: 'app-root',
@@ -31,19 +33,15 @@ export class AppComponent {
   loading = false;
   hasData = this.dataService.loaded$;
 
-  eulaAcceptance = localStorage['EULA'] === 'accepted';
-
-  ngOnInit() {
-    this.eulaAcceptance = localStorage.getItem('EULA') === 'accepted';
-  }
+  eulaAcceptance = true;
 
   acceptEula() {
     this.eulaAcceptance = true;
     localStorage['EULA'] = 'accepted';
-    Notification.requestPermission();
   }
   declineEula() {
     localStorage.removeItem('EULA');
     location.href = 'about:blank';
   }
+  
 }
