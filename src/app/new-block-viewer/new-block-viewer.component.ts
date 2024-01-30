@@ -63,7 +63,7 @@ export class NewBlockViewerComponent {
           : 'keep';
 
       if (newBlock.length > 0 && Notification.permission === 'granted')
-        new Notification(`新增 ${newBlock.length} 门成绩`, {
+        new Notification(`새로운 성적 ${newBlock.length} 개 추가!`, {
           body: `${newBlock.map((co) => courses[co].name).join('、')}`,
         });
     });
