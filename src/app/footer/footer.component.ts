@@ -28,7 +28,7 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {}
 
   showCalculator() {
-    const x = Number(prompt('输入分数 (60 ~ 100）或绩点（1 ~ 4）来换算'));
+    const x = Number(prompt('환산을 위해 60~100 사이의 점수 혹은 1~4 사이의 GPA를 입력해주세요.'));
     if (x >= 60 && x <= 100) {
       const y = 4 - (3 * Math.pow(100 - x, 2)) / 1600;
       alert(`GPA(${x.toFixed(2)}) ≈ ${y.toFixed(2)}`);
@@ -36,7 +36,7 @@ export class FooterComponent implements OnInit {
       const y = 100 - Math.sqrt((1600 / 3) * (4 - x));
       alert(`GPA(${y.toFixed(2)}) ≈ ${x.toFixed(2)}`);
     } else {
-      alert('输入不合法。');
+      alert('유효하지 않은 입력입니다.');
     }
   }
 
