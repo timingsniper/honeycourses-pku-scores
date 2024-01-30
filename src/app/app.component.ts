@@ -28,19 +28,18 @@ inject();
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  eulaAcceptance = true;
   constructor(public auth: AuthService, private dataService: DataService) {}
-
   loading = false;
   hasData = this.dataService.loaded$;
-
-  eulaAcceptance = true;
+  toggleEula() {
+    this.eulaAcceptance = !this.eulaAcceptance;
+  }
 
   acceptEula() {
     this.eulaAcceptance = true;
-    localStorage['EULA'] = 'accepted';
   }
   declineEula() {
-    localStorage.removeItem('EULA');
     location.href = 'about:blank';
   }
   

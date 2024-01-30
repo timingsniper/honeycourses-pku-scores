@@ -25,16 +25,17 @@
   <ng-template #viewer>
     <app-viewer></app-viewer>
   </ng-template>
-  <app-footer (showEula)="eulaAcceptance = false"></app-footer>
+  <app-footer (showEula)="toggleEula()"></app-footer>
 </div>
 <!-- 用户须知 -->
+
 <input
   type="checkbox"
   id="eulaModal"
   class="modal-toggle"
   [checked]="!eulaAcceptance"
 />
-<div class="modal modal-bottom sm:modal-middle">
+<div class="modal modal-bottom sm:modal-middle" *ngIf="!eulaAcceptance">
   <div class="modal-box" style="font-family: 'NanumSquareNeo-Variable';">
     <h3 class="font-bold text-lg mb-3">사용 안내</h3>
     <div class="h-[350px] overflow-auto">

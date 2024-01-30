@@ -41,4 +41,7 @@ export class FooterComponent implements OnInit {
   }
 
   @Output() showEula = new EventEmitter();
+  onShowEula() {
+    this.showEula.emit();
+  }
 }
